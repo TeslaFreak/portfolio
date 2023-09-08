@@ -1,0 +1,28 @@
+---
+import { Cube } from "../components/Cube";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Welcome to the portfolio of Chris Allmon">
+  <main transition:animate="slide">
+    <div class="rotation-container">
+      <Cube client:load />
+    </div>
+  </main>
+</Layout>
+
+<style>
+  body {
+    padding: 0;
+    margin: 0;
+    min-height: 500vh;
+    background-color: #0f2453;
+  }
+  .rotation-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    left: 50%;
+  }
+</style>
