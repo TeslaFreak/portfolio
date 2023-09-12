@@ -1,19 +1,24 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Cube } from "../components/Cube";
+import MormalImageSlider from "../components/MormalImageSlider.jsx";
+import { BackgroundFadeTrigger } from "../components/BackgroundFadeTrigger.jsx";
 ---
 
 <Layout title="Welcome to the portfolio of Chris Allmon">
-  <a id="works"></a>
   <div class="spin-track">
-    <div class="works-container">
-      <Cube client:load />
+    <a id="works">
+      <div class="works-container">
+        <Cube client:load />
+      </div>
+    </a>
+  </div>
+  <a id="clients">
+    <div class="clients-container">
+      <BackgroundFadeTrigger parentClassName="clients-container" client:load />
+      <MormalImageSlider client:load />
     </div>
-  </div>
-  <div class="clients-container">
-    <a id="clients"></a>
-    <div>Hello World</div>
-  </div>
+  </a>
 </Layout>
 
 <style>
@@ -27,9 +32,9 @@ import { Cube } from "../components/Cube";
     top: 0;
   }
   .clients-container {
-    background-color: bisque;
-    position: sticky;
-    top: 0;
+    position: relative;
     height: 100vh;
+    max-width: 100vw;
+    overflow: hidden;
   }
 </style>

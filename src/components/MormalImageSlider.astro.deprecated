@@ -1,0 +1,115 @@
+<script>
+  const track = document.getElementById("image-track");
+
+  const handleOnDown = (e) => (track.dataset.mouseDownAt = e.clientX);
+
+  const handleOnUp = (e) => {
+    track.dataset.mouseDownAt = "0";
+    track.dataset.prevPercentage = track.dataset.percentage;
+  };
+
+  const handleOnMove = (e) => {
+    if (track.dataset.mouseDownAt === "0") return;
+
+    const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX,
+      maxDelta = window.innerWidth / 2;
+
+    const percentage = (mouseDelta / maxDelta) * -100,
+      nextPercentageUnconstrained =
+        parseFloat(track.dataset.prevPercentage) + percentage,
+      nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
+
+    track.dataset.percentage = String(nextPercentage);
+
+    track.animate(
+      {
+        transform: `translate(${nextPercentage * 2}%, -50%)`,
+      },
+      { duration: 1200, fill: "forwards" }
+    );
+
+    for (const image of track.getElementsByClassName("slide-image")) {
+      image.animate(
+        {
+          objectPosition: `${100 + nextPercentage}% center`,
+        },
+        { duration: 1200, fill: "forwards" }
+      );
+    }
+  };
+
+  /* -- Had to add extra lines for touch events -- */
+
+  window.onmousedown = (e) => handleOnDown(e);
+
+  window.ontouchstart = (e) => handleOnDown(e.touches[0]);
+
+  window.onmouseup = (e) => handleOnUp(e);
+
+  window.ontouchend = (e) => handleOnUp(e.touches[0]);
+
+  window.onmousemove = (e) => handleOnMove(e);
+
+  window.ontouchmove = (e) => handleOnMove(e.touches[0]);
+</script>
+
+<div id="image-track">
+  <img
+    class="slide-image"
+    draggable="false"
+    src="https://images.unsplash.com/photo-1621814684469-9fd78033d7de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MXw2NDY1NjN8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+  />
+  <img
+    class="slide-image"
+    draggable="false"
+    src="https://images.unsplash.com/photo-1502481851512-e9e2529bfbf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGxhbmRzY2FwZXxlbnwwfDB8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+  />
+  <img
+    class="slide-image"
+    draggable="false"
+    src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGxhbmRzY2FwZXxlbnwwfDB8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+  />
+  <img
+    class="slide-image"
+    draggable="false"
+    src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGxhbmRzY2FwZXxlbnwwfDB8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+  />
+  <img
+    class="slide-image"
+    draggable="false"
+    src="https://images.unsplash.com/photo-1621814684469-9fd78033d7de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MXw2NDY1NjN8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+  />
+  <img
+    class="slide-image"
+    draggable="false"
+    src="https://images.unsplash.com/photo-1502481851512-e9e2529bfbf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGxhbmRzY2FwZXxlbnwwfDB8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+  />
+  <img
+    class="slide-image"
+    draggable="false"
+    src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGxhbmRzY2FwZXxlbnwwfDB8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+  />
+  <img
+    class="slide-image"
+    draggable="false"
+    src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGxhbmRzY2FwZXxlbnwwfDB8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+  />
+</div>
+
+<style>
+  .slide-image {
+    width: 40vmin;
+    height: 56vmin;
+    object-fit: cover;
+    object-position: 100% center;
+  }
+  #image-track {
+    display: flex;
+    gap: 4vmin;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(0%, -50%);
+    user-select: none;
+  }
+</style>
