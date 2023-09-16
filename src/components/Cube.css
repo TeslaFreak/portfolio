@@ -5,20 +5,19 @@
 .cube-wrapper {
   --size: 30vmin;
   position: fixed;
-  left: 30%;
+  right: calc(50% - 15vmin);
   top: 50%;
   perspective: 100vmin;
 
-  @media (max-height: 1250px) {
-    top: 20vh;
+  @media (max-height: 1250px) & (max-width: 480) {
+    top: 50vh;
     left: 33%;
-    --size: 20vmin;
   }
 }
 
 .cube {
   transform-style: preserve-3d;
-  transform: rotateX(calc(var(--scroll) * 275deg));
+  transform: rotateX(calc(var(--scroll) * 270deg));
 }
 
 .cube-face {
@@ -83,7 +82,7 @@ h1 {
   left: calc(50% + (var(--size) * 0.5));
   width: calc(1.5 * var(--size));
   transform-style: preserve-3d;
-  transform: rotateX(calc(var(--scroll) * -275deg));
+  transform: rotateX(calc(var(--scroll) * -270deg));
 }
 
 .cube-image {
