@@ -1,8 +1,9 @@
 # Portfolio of Chris Allmon
 
-This repo serves as both a portfolio piece, and experimentation sandbox. please enjoy the aesthetic nature of the site but dont judge me too harshly for the messyness of the code, its all about trying new things <3
+This repo serves as both a portfolio piece, and experimentation sandbox. please enjoy the aesthetic nature of the site but dont judge me too harshly for the messiness of the code, its all about trying new things <3
 
 ## Hosted at a <https://allmon.digital>
+
 
 ## 🧞 Commands
 
