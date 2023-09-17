@@ -1,7 +1,7 @@
 export const HeaderBar = ({}) => {
   return (
     <div className="header-container p-6 w-full justify-between flex flex-row fixed top-6 left-0 z-50">
-      <div className="font-neueMontreal text-2xl leading-6">
+      <div className="font-neueMontreal text-2xl leading-6 ease-in-out duration-1000 transition">
         <div>Coder</div>
         <div>Craftsman</div>
         <div>Designer</div>

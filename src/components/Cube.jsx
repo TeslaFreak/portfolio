@@ -18,6 +18,10 @@ export const Cube = ({}) => {
       false
     );
   }, []);
+
+  const handleClick = (src) => {
+    window.open(src, "_blank");
+  };
   return (
     <div class="container">
       <div class="cube-wrapper">
@@ -36,31 +40,45 @@ export const Cube = ({}) => {
           </div>
         </div>
         <div class="cube cube-right">
-          <div class="cube-face-1 cube-face">
-            <img
-              src="https://df48mz0agshoc.cloudfront.net/DJI_0062.JPG"
-              class="cube-image"
+          <a
+            class="cube-face-1 cube-face linkwrap"
+            href="https://escapeoverseer.com"
+            target="_blank"
+          >
+            <div class="blocker" />
+            <iframe
+              src="https://escapeoverseer.com"
+              width="100%"
+              height="100%"
             />
-          </div>
+          </a>
 
-          <div class="cube-face-2 cube-face">
-            <img
-              src="https://df48mz0agshoc.cloudfront.net/DJI_0193.JPG"
-              class="cube-image"
+          <a
+            class="cube-face-2 cube-face"
+            href="https://escapeoverseer.com"
+            target="_blank"
+          >
+            <div class="blocker" />
+            <iframe
+              src="https://escapeoverseer.com"
+              width="100%"
+              height="100%"
             />
-          </div>
-          <div class="cube-face-3 cube-face">
-            <img
-              src="https://df48mz0agshoc.cloudfront.net/DJI_0203.JPG"
-              class="cube-image"
-            />
-          </div>
-          <div class="cube-face-4 cube-face">
-            <img
-              src="https://df48mz0agshoc.cloudfront.net/DJI_0226.JPG"
-              class="cube-image"
-            />
-          </div>
+          </a>
+          <a
+            class="cube-face-3 cube-face"
+            href="https://youtu.be/C1pZnfNyQQo?si=Fq_3eVe9Shr3LIqX"
+            target="_blank"
+          >
+            <img src="fuihero.jpg" class="cube-image object-cover" />
+          </a>
+          <a
+            class="cube-face-4 cube-face"
+            href="https://www.jayhawkmotorsports.org/"
+            target="_blank"
+          >
+            <img src="jhmotohero.jpg" class="cube-image object-cover" />
+          </a>
         </div>
       </div>
     </div>
