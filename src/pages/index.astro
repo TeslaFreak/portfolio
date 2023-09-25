@@ -1,25 +1,25 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import HomeLayout from "../layouts/HomeLayout.astro";
 import { Cube } from "../components/Cube";
 import MormalImageSlider from "../components/MormalImageSlider.jsx";
 import { BackgroundFadeTrigger } from "../components/BackgroundFadeTrigger.jsx";
 ---
 
-<Layout title="Welcome to the portfolio of Chris Allmon">
+<HomeLayout>
   <div class="spin-track">
     <a id="works">
-      <div class="works-container">
-        <Cube client:only />
+      <div class="works-container" transition:persist>
+        <Cube client:only transition:persist />
       </div>
     </a>
   </div>
   <a id="clients">
-    <div class="clients-container">
+    <div class="clients-container" transition:persist>
       <BackgroundFadeTrigger parentClassName="clients-container" client:load />
-      <MormalImageSlider client:load />
+      <MormalImageSlider client:only transition:persist />
     </div>
   </a>
-</Layout>
+</HomeLayout>
 
 <style>
   .spin-track {

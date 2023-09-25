@@ -23,29 +23,29 @@ export const Cube = ({}) => {
     window.open(src, "_blank");
   };
   return (
-    <div class="container">
-      <div class="cube-wrapper">
-        <div class="cube cube-left">
-          <div class="cube-face-1 cube-face">
+    <div className="container">
+      <div className="cube-wrapper">
+        <div className="cube cube-left">
+          <div className="cube-face-1 cube-face">
             <NamePlate />
           </div>
-          <div class="cube-face-2 cube-face">
+          <div className="cube-face-2 cube-face">
             <NamePlate />
           </div>
-          <div class="cube-face-3 cube-face">
+          <div className="cube-face-3 cube-face">
             <NamePlate />
           </div>
-          <div class="cube-face-4 cube-face">
+          <div className="cube-face-4 cube-face">
             <NamePlate />
           </div>
         </div>
-        <div class="cube cube-right">
+        <div className="cube cube-right">
           <a
-            class="cube-face-1 cube-face linkwrap"
+            className="cube-face-1 cube-face linkwrap"
             href="https://escapeoverseer.com"
             target="_blank"
           >
-            <div class="blocker" />
+            <div className="blocker" />
             <iframe
               src="https://escapeoverseer.com"
               width="100%"
@@ -54,11 +54,11 @@ export const Cube = ({}) => {
           </a>
 
           <a
-            class="cube-face-2 cube-face"
+            className="cube-face-2 cube-face"
             href="https://escapeoverseer.com"
             target="_blank"
           >
-            <div class="blocker" />
+            <div className="blocker" />
             <iframe
               src="https://escapeoverseer.com"
               width="100%"
@@ -66,18 +66,18 @@ export const Cube = ({}) => {
             />
           </a>
           <a
-            class="cube-face-3 cube-face"
+            className="cube-face-3 cube-face"
             href="https://youtu.be/C1pZnfNyQQo?si=Fq_3eVe9Shr3LIqX"
             target="_blank"
           >
-            <img src="fuihero.jpg" class="cube-image object-cover" />
+            <img src="fuihero.jpg" className="cube-image object-cover" />
           </a>
           <a
-            class="cube-face-4 cube-face"
+            className="cube-face-4 cube-face"
             href="https://www.jayhawkmotorsports.org/"
             target="_blank"
           >
-            <img src="jhmotohero.jpg" class="cube-image object-cover" />
+            <img src="jhmotohero.jpg" className="cube-image object-cover" />
           </a>
         </div>
       </div>

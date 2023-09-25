@@ -25,8 +25,8 @@ function ImageSlider() {
       return;
     }
     const mouseDelta = mouseDownAt - mouseCurrentX;
-    //const maxDelta = track.current.offsetWidth;
-    const maxDelta = window.innerWidth;
+    const maxDelta = track.current.scrollWidth;
+    // const maxDelta = window.innerWidth;
 
     const tpercentage = (mouseDelta / maxDelta) * -100;
     const nextPercentageUnconstrained = prevPercentage + tpercentage;
@@ -85,43 +85,65 @@ function ImageSlider() {
     };
   }, []);
 
+  const pointer = useRef({ x: 0, y: 0 });
+
+  const imageMouseDown = (e) => {
+    pointer.current = { x: e.clientX, y: e.clientY };
+  };
+  const imageMouseUp = (e, path) => {
+    const { x, y } = pointer.current;
+    if (Math.abs(e.clientX - x) < 10 && Math.abs(e.clientY - y) < 10) {
+      window.location.href = path;
+    }
+  };
+
   return (
     <div
       id="image-track"
-      className="w-full flex gap-[4vmin] absolute left-1/2 top-1/2  translate-y-[-50%]"
+      className="w-max flex gap-[4vmin] absolute left-1/2 top-1/2  translate-y-[-50%] select-none"
       ref={track}
       data-mouse-down-at={mouseDownAt}
       data-prev-percentage={prevPercentage}
     >
       <img
+        id="solv-img"
         className="slide-image w-[40vmin] h-[56vmin] object-cover object-right select-none"
         draggable="false"
-        src="https://images.unsplash.com/photo-1621814684469-9fd78033d7de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MXw2NDY1NjN8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+        onMouseDown={(e) => imageMouseDown(e)}
+        onMouseUp={(e) => imageMouseUp(e, "/clients/solv")}
+        src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
       />
       <img
+        id="lobby-img"
         className="slide-image w-[40vmin] h-[56vmin] object-cover object-right select-none"
         draggable="false"
-        src="https://images.unsplash.com/photo-1502481851512-e9e2529bfbf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGxhbmRzY2FwZXxlbnwwfDB8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+        onMouseDown={(e) => imageMouseDown(e)}
+        onMouseUp={(e) => imageMouseUp(e, "/clients/lobby")}
+        src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
       />
       <img
+        id="simplifyy-img"
         className="slide-image w-[40vmin] h-[56vmin] object-cover object-right select-none"
         draggable="false"
-        src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGxhbmRzY2FwZXxlbnwwfDB8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+        onMouseDown={(e) => imageMouseDown(e)}
+        onMouseUp={(e) => imageMouseUp(e, "/clients/simplifyy")}
+        src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2273&q=80"
       />
       <img
+        id="civic-img"
         className="slide-image w-[40vmin] h-[56vmin] object-cover object-right select-none"
         draggable="false"
-        src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGxhbmRzY2FwZXxlbnwwfDB8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+        onMouseDown={(e) => imageMouseDown(e)}
+        onMouseUp={(e) => imageMouseUp(e, "/clients/civicplus")}
+        src="https://images.unsplash.com/photo-1548946061-4af3de8b577c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2503&q=80"
       />
       <img
+        id="ge-img"
         className="slide-image w-[40vmin] h-[56vmin] object-cover object-right select-none"
         draggable="false"
-        src="https://images.unsplash.com/photo-1621814684469-9fd78033d7de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MXw2NDY1NjN8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
-      />
-      <img
-        className="slide-image w-[40vmin] h-[56vmin] object-cover object-right select-none"
-        draggable="false"
-        src="https://images.unsplash.com/photo-1502481851512-e9e2529bfbf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGxhbmRzY2FwZXxlbnwwfDB8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+        onMouseDown={(e) => imageMouseDown(e)}
+        onMouseUp={(e) => imageMouseUp(e, "/clients/ge")}
+        src="https://images.unsplash.com/photo-1503379230423-19c53f7e9a33?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2346&q=80"
       />
     </div>
   );
