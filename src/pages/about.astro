@@ -1,0 +1,16 @@
+---
+import { slide } from "astro:transitions";
+import LeftAlignedHeaderLayout from "../layouts/LeftAlignedHeaderLayout.astro";
+---
+
+<LeftAlignedHeaderLayout title="About">
+  <div transition:animate={slide()}>
+    <p>
+      Hola, this is the about page. As you can see it is blank. That is because
+      I am an enigma.
+    </p><br />
+    <p>
+      JK, I just havent gotten around to writing this page yet. Have a nice day.
+    </p>
+  </div>
+</LeftAlignedHeaderLayout>

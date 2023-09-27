@@ -1,6 +1,5 @@
 ---
 import { ViewTransitions } from "astro:transitions";
-import { HeaderBar } from "../components/HeaderBar";
 
 interface Props {
   title: string;
@@ -46,26 +45,7 @@ const { title } = Astro.props;
         -ms-overflow-style: none; /* IE and Edge */
         scrollbar-width: none; /* Firefox */
       }
-      html {
-        --scroll-bg-color: 1;
-        font-family: system-ui, sans-serif;
-        background: #fff;
-        background-size: 224px;
-        scroll-behavior: smooth;
 
-        --background-fade-color: rgb(
-          calc(255 * (var(--scroll-bg-color))),
-          calc(255 * (var(--scroll-bg-color))),
-          calc(255 * (var(--scroll-bg-color)))
-        );
-        --text-fade-color: rgb(
-          calc(255 * clamp(0, 1 - var(--scroll-bg-color), 1)),
-          calc(255 * clamp(0, 1 - var(--scroll-bg-color), 1)),
-          calc(255 * clamp(0, 1 - var(--scroll-bg-color), 1))
-        );
-        background-color: var(--background-fade-color);
-        transition: background-color 0.5s ease;
-      }
       code {
         font-family:
           Menlo,

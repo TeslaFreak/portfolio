@@ -1,0 +1,10 @@
+---
+import { slide } from "astro/transitions";
+import LeftAlignedHeaderLayout from "../layouts/LeftAlignedHeaderLayout.astro";
+---
+
+<LeftAlignedHeaderLayout title="Contact">
+  <div transition:animate={slide()}>
+    <p>See the about page and this will all make sense.</p><br />
+  </div>
+</LeftAlignedHeaderLayout>

@@ -3,22 +3,19 @@ import HomeLayout from "../layouts/HomeLayout.astro";
 import { Cube } from "../components/Cube";
 import MormalImageSlider from "../components/MormalImageSlider.jsx";
 import { BackgroundFadeTrigger } from "../components/BackgroundFadeTrigger.jsx";
+import { slide } from "astro:transitions";
 ---
 
 <HomeLayout>
-  <div class="spin-track">
-    <a id="works">
-      <div class="works-container" transition:persist>
-        <Cube client:only transition:persist />
-      </div>
-    </a>
-  </div>
-  <a id="clients">
-    <div class="clients-container" transition:persist>
-      <BackgroundFadeTrigger parentClassName="clients-container" client:load />
-      <MormalImageSlider client:only transition:persist />
+  <div id="works" class="spin-track" transition:animate={slide()}>
+    <div class="works-container">
+      <Cube client:only />
     </div>
-  </a>
+  </div>
+  <div id="clients" transition:animate={slide()} class="clients-container">
+    <BackgroundFadeTrigger parentClassName="clients-container" client:load />
+    <MormalImageSlider client:only />
+  </div>
 </HomeLayout>
 
 <style>

@@ -1,8 +1,29 @@
 ---
-import { HeaderBar } from "../components/HeaderBar";
+import HeaderBar from "../components/HeaderBar.astro";
 import Layout from "./Layout.astro";
 ---
 
 <Layout title="Welcome to the portfolio of Chris Allmon">
-  <HeaderBar client:load /><slot />
+  <HeaderBar /><slot />
 </Layout>
+<style>
+  html {
+    --scroll-bg-color: 1;
+    font-family: system-ui, sans-serif;
+    background: #fff;
+    background-size: 224px;
+
+    --background-fade-color: rgb(
+      calc(255 * (var(--scroll-bg-color))),
+      calc(255 * (var(--scroll-bg-color))),
+      calc(255 * (var(--scroll-bg-color)))
+    );
+    --text-fade-color: rgb(
+      calc(255 * clamp(0, 1 - var(--scroll-bg-color), 1)),
+      calc(255 * clamp(0, 1 - var(--scroll-bg-color), 1)),
+      calc(255 * clamp(0, 1 - var(--scroll-bg-color), 1))
+    );
+    background-color: var(--background-fade-color);
+    transition: background-color 0.5s ease;
+  }
+</style>

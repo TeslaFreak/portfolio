@@ -1,0 +1,52 @@
+---
+import { slide } from "astro/transitions";
+---
+
+<div
+  class="header-container p-6 w-full justify-between flex flex-row fixed top-6 left-0 z-50"
+>
+  <div
+    transition:animate={slide()}
+    class="font-neueMontreal text-2xl leading-6 ease-in-out duration-1000 transition"
+  >
+    <div>Coder</div>
+    <div>Craftsman</div>
+    <div>Designer</div>
+    <div>Architect</div>
+  </div>
+  <div
+    transition:name="header-nav"
+    class="group font-neueMontreal text-2xl leading-6 items-end flex flex-col transition"
+  >
+    <a
+      href="#works"
+      class="group-hover:opacity-30 hover:!opacity-100 hover:text-4xl ease-in-out duration-500 transition"
+    >
+      Works
+    </a>
+    <a
+      href="#clients"
+      class="group-hover:opacity-30 hover:!opacity-100 transition ease-in-out duration-500 hover:text-4xl"
+    >
+      Clients
+    </a>
+    <a
+      href="/about"
+      class="group-hover:opacity-30 hover:!opacity-100 hover:text-4xl ease-in-out duration-500 transition"
+    >
+      About
+    </a>
+    <a
+      href="/contact"
+      class="group-hover:opacity-30 hover:!opacity-100 hover:text-4xl ease-in-out duration-500 transition"
+    >
+      Contact
+    </a>
+  </div>
+  <style>
+    .header-container {
+      color: var(--text-fade-color);
+      transition: background-color 1s ease;
+    }
+  </style>
+</div>

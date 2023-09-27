@@ -1,0 +1,14 @@
+---
+import HeaderBarLeftAligned from "../components/HeaderBarLeftAligned.astro";
+import Layout from "./Layout.astro";
+---
+
+<Layout title="Welcome to the portfolio of Chris Allmon">
+  <HeaderBarLeftAligned />
+  <div class="pt-44 px-6">
+    <slot />
+  </div>
+</Layout>
+<script is:inline>
+document.documentElement.style.background = "#141414";
+</script>
