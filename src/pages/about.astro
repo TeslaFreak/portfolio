@@ -155,7 +155,6 @@ import LeftAlignedHeaderLayout from "../layouts/LeftAlignedHeaderLayout.astro";
             entry.target.classList.add("slideIn");
             lastVisibleIndex = i;
           } else {
-            console.log(entry.target);
             const es = getComputedStyle(entry.target);
             entry.target.style.setProperty(
               "--ao",
