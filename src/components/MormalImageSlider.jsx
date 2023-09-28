@@ -25,8 +25,6 @@ function ImageSlider() {
       setPrevPercentage(percentage);
       return;
     }
-
-    console.log(isDragging);
     const mouseDelta = mouseDownAt - mouseCurrentX;
     const maxDelta = track.current.scrollWidth;
     // const maxDelta = window.innerWidth;

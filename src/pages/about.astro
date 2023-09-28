@@ -4,13 +4,190 @@ import LeftAlignedHeaderLayout from "../layouts/LeftAlignedHeaderLayout.astro";
 ---
 
 <LeftAlignedHeaderLayout title="About">
-  <div transition:animate={slide()}>
-    <p>
-      Hola, this is the about page. As you can see it is blank. That is because
-      I am an enigma.
-    </p><br />
-    <p>
-      JK, I just havent gotten around to writing this page yet. Have a nice day.
-    </p>
-  </div>
+  <section transition:animate={slide()} class="">
+    <div
+      class="list-parent pl-[calc(50%-74px)] pb-[10vh] block text-[2.815vw] leading-[3.6458vw] tracking-[-0.02em] font-neueMontreal"
+    >
+      <div class="overflow-hidden">
+        <p style="--ao:0" class="translate-y-full">
+          Chris Allmon is a seasoned software
+        </p>
+      </div>
+      <div class="overflow-hidden">
+        <p style="--ao:1" class="translate-y-full">
+          engineer who graduated from the University
+        </p>
+      </div>
+      <div class="overflow-hidden">
+        <p style="--ao:2" class="translate-y-full now">
+          of Kansas in 2017 with a degree in
+        </p>
+      </div>
+      <div class="overflow-hidden">
+        <p style="--ao:3" class="translate-y-full">
+          computer science. His journey into the
+        </p>
+      </div>
+      <div class="overflow-hidden">
+        <p style="--ao:4" class="translate-y-full">
+          world of tech began with a desire for
+        </p>
+      </div>
+      <div class="overflow-hidden">
+        <p style="--ao:5" class="translate-y-full">
+          blending art and software to create
+        </p>
+      </div>
+      <div class="overflow-hidden">
+        <p style="--ao:6" class="translate-y-full">something unique.</p>
+      </div>
+      <br />
+
+      <div class="overflow-hidden">
+        <p style="--ao:7" class="translate-y-full">
+          This passion for the intersection of art and
+        </p>
+      </div>
+      <div class="overflow-hidden">
+        <p style="--ao:8" class="translate-y-full">
+          technology led him on a 7 year journey
+        </p>
+      </div>
+      <div class="overflow-hidden">
+        <p style="--ao:9" class="translate-y-full">
+          across many industries you might
+        </p>
+      </div>
+      <div class="overflow-hidden">
+        <p style="--ao:10" class="translate-y-full">
+          not expect, from aviation to escape rooms
+        </p>
+      </div>
+      <div class="overflow-hidden">
+        <p style="--ao:11" class="translate-y-full">
+          to housing and healthcare.
+        </p>
+      </div>
+      <br />
+
+      <div class="overflow-hidden">
+        <p style="--ao:12" class="translate-y-full">
+          While Chris has been fortunate to receive
+        </p>
+      </div>
+      <div class="overflow-hidden">
+        <p style="--ao:13" class="translate-y-full">
+          recognition in the tech industry, his true joy
+        </p>
+      </div>
+      <div class="overflow-hidden">
+        <p style="--ao:14" class="translate-y-full">
+          comes from fostering the next generation
+        </p>
+      </div>
+      <div class="overflow-hidden">
+        <p style="--ao:15" class="translate-y-full">
+          of innovators. He is dedicated to
+        </p>
+      </div>
+      <div class="overflow-hidden">
+        <p style="--ao:16" class="translate-y-full">
+          supporting STEM education initiatives
+        </p>
+      </div>
+      <div class="overflow-hidden">
+        <p style="--ao:17" class="translate-y-full">
+          and contributing to causes that
+        </p>
+      </div>
+      <div class="overflow-hidden">
+        <p style="--ao:18" class="translate-y-full">
+          improve access to education and
+        </p>
+      </div>
+      <div class="overflow-hidden">
+        <p style="--ao:19" class="translate-y-full">
+          mentorship in underserved communities.
+        </p>
+      </div>
+      <br />
+
+      <div class="overflow-hidden">
+        <p style="--ao:20" class="translate-y-full">
+          Outside of his tech pursuits, Chris finds
+        </p>
+      </div>
+      <div class="overflow-hidden">
+        <p style="--ao:21" class="translate-y-full">
+          relaxation in whiskey tasting, scuba,
+        </p>
+      </div>
+      <div class="overflow-hidden">
+        <p style="--ao:22" class="translate-y-full">
+          and sky diving (never at the same time).
+        </p>
+      </div>
+      <div class="overflow-hidden">
+        <p style="--ao:23" class="translate-y-full">
+          He is always eager to explore new horizons
+        </p>
+      </div>
+      <div class="overflow-hidden">
+        <p style="--ao:24" class="translate-y-full">
+          in technology and find ways to use
+        </p>
+      </div>
+      <div class="overflow-hidden">
+        <p style="--ao:25" class="translate-y-full">
+          innovation for the greater good.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener("astro:page-load", () => {
+      const pList = document.querySelectorAll("p");
+      const callback = (entries, observer) => {
+        let lastVisibleIndex = 0;
+        entries.forEach((entry, i) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("slideIn");
+            lastVisibleIndex = i;
+          } else {
+            console.log(entry.target);
+            const es = getComputedStyle(entry.target);
+            entry.target.style.setProperty(
+              "--ao",
+              es.getPropertyValue("--ao") - lastVisibleIndex
+            );
+          }
+        });
+      };
+      const options = { rootMargin: "-10%" };
+      const myObserver = new IntersectionObserver(callback, options);
+
+      pList.forEach((p) => {
+        myObserver.observe(p);
+      });
+    });
+  </script>
+
+  <style>
+    .slideIn {
+      animation: slide 0.5s ease-in-out;
+      animation-delay: calc(var(--ao, 0) * 100ms);
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes slide {
+      0% {
+        transform: translate3d(0, 110%, 0);
+      }
+
+      100% {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+  </style>
 </LeftAlignedHeaderLayout>

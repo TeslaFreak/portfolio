@@ -3,12 +3,9 @@ import HeaderBarLeftAligned from "../components/HeaderBarLeftAligned.astro";
 import Layout from "./Layout.astro";
 ---
 
-<Layout title="Welcome to the portfolio of Chris Allmon">
-  <HeaderBarLeftAligned />
-  <div class="pt-44 px-6">
+<Layout title="About">
+  <HeaderBarLeftAligned class="bg-[#141414] text-white" />
+  <div class="pt-44 px-6 bg-[#141414] text-white h-full w-full">
     <slot />
   </div>
 </Layout>
-<script is:inline>
-document.documentElement.style.background = "#141414";
-</script>

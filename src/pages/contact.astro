@@ -4,7 +4,11 @@ import LeftAlignedHeaderLayout from "../layouts/LeftAlignedHeaderLayout.astro";
 ---
 
 <LeftAlignedHeaderLayout title="Contact">
-  <div transition:animate={slide()}>
-    <p>See the about page and this will all make sense.</p><br />
-  </div>
+  <section transition:animate={slide()}>
+    <div
+      class="pl-[calc(50%-64px)] block text-[2.815vw] leading-[3.6458vw] tracking-[-0.02em] font-neueMontreal"
+    >
+      <p>See the about page and this will all make sense.</p><br />
+    </div>
+  </section>
 </LeftAlignedHeaderLayout>
