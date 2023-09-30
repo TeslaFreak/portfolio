@@ -15,30 +15,33 @@ import { slide } from "astro/transitions";
     <div>Architect</div>
   </div>
   <div
-    transition:name="header-nav"
     class="group font-neueMontreal text-2xl leading-6 items-end flex flex-col transition"
   >
     <a
+      transition:name="header-works"
       href="#works"
-      class="group-hover:opacity-30 hover:!opacity-100 hover:text-4xl ease-in-out duration-500 transition"
+      class="group-hover:opacity-30 hover:!opacity-100 hover:scale-125 origin-right ease-in-out duration-500 transition"
     >
       Works
     </a>
     <a
+      transition:name="header-clients"
       href="#clients"
-      class="group-hover:opacity-30 hover:!opacity-100 transition ease-in-out duration-500 hover:text-4xl"
+      class="group-hover:opacity-30 hover:!opacity-100 transition ease-in-out duration-500 hover:scale-125 origin-right"
     >
       Clients
     </a>
     <a
+      transition:name="header-about"
       href="/about"
-      class="group-hover:opacity-30 hover:!opacity-100 hover:text-4xl ease-in-out duration-500 transition"
+      class="group-hover:opacity-30 hover:!opacity-100 hover:scale-125 origin-right ease-in-out duration-500 transition"
     >
       About
     </a>
     <a
+      transition:name="header-contact"
       href="/contact"
-      class="group-hover:opacity-30 hover:!opacity-100 hover:text-4xl ease-in-out duration-500 transition"
+      class="group-hover:opacity-30 hover:!opacity-100 hover:scale-125 origin-right ease-in-out duration-500 transition"
     >
       Contact
     </a>

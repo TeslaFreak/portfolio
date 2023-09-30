@@ -1,10 +1,36 @@
 ---
+import { slide } from "astro/transitions";
+import HeaderBarTopAligned from "../components/HeaderBarTopAligned.astro";
 import Layout from "./Layout.astro";
+const { title, prevLink, nextLink, bgImgSrc } = Astro.props;
 ---
 
-<Layout title="Welcome to the portfolio of Chris Allmon">
-  <slot />
+<Layout title={title}>
+  <a
+    href={prevLink}
+    class="h-full w-40 z-10 absolute left-0 hover:scale-150 hover:shadow-2xl shadow-stone-700 flex items-center justify-center transition cursor-pointer"
+  >
+    <i class="fa fa-lg fa-chevron-left text-white"></i>
+  </a>
+  <HeaderBarTopAligned />
+  <section
+    class="w-screen h-screen relative bg-black"
+    transition:animate={slide({ duration: "1s" })}
+  >
+    <img
+      class="object-cover object-center select-none absolute w-full h-full blur-[8px]"
+      draggable="false"
+      src={bgImgSrc}
+    />
+    <div id="fog" class="w-full h-full absolute opacity-40 bg-gray-700"></div>
+    <div class="relative text-white text-5xl px-52 pt-40">
+      <slot class="relative" />
+    </div>
+  </section>
 </Layout>
-<script is:inline>
-document.documentElement.style.background = "#00008B";
-</script>
+<a
+  href={nextLink}
+  class="h-full w-40 z-10 absolute right-0 top-0 hover:scale-150 hover:shadow-2xl shadow-stone-700 flex items-center justify-center transition cursor-pointer"
+>
+  <i class="fa fa-lg fa-chevron-right text-white"></i>
+</a>
