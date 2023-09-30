@@ -1,9 +1,10 @@
 ---
 import HeaderBarLeftAligned from "../components/HeaderBarLeftAligned.astro";
 import Layout from "./Layout.astro";
+const { title } = Astro.props;
 ---
 
-<Layout title="About">
+<Layout title={title}>
   <HeaderBarLeftAligned class="bg-[#141414] text-white" />
   <div class="pt-44 px-6 bg-[#141414] text-white h-full min-h-screen w-full">
     <slot />
