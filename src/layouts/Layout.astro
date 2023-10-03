@@ -1,6 +1,7 @@
 ---
 import { ViewTransitions } from "astro:transitions";
-
+import "../styles/global.css";
+import "../styles/fonts.css";
 interface Props {
   title: string;
 }
@@ -11,8 +12,6 @@ const { title } = Astro.props;
 <!doctype html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" as="font" href="/src/styles/fonts.css" />
-    <link rel="stylesheet" href="/src/styles/global.css" />
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
@@ -53,18 +52,6 @@ const { title } = Astro.props;
       .no-scrollbar {
         -ms-overflow-style: none; /* IE and Edge */
         scrollbar-width: none; /* Firefox */
-      }
-
-      code {
-        font-family:
-          Menlo,
-          Monaco,
-          Lucida Console,
-          Liberation Mono,
-          DejaVu Sans Mono,
-          Bitstream Vera Sans Mono,
-          Courier New,
-          monospace;
       }
     </style>
   </body>

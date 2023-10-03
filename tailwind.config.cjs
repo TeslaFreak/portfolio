@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {},
     fontFamily: {
-      sans: ["Montreal", "sans-serif"],
+      sans: ["Montreal", "system-ui", "sans-serif"],
       diatype: ["ABC Diatype Light", "sans-serif"],
     },
   },
