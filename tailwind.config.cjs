@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {},
     fontFamily: {
-      sans: ["PP Neue Montreal", "sans-serif"],
+      sans: ["Montreal", "sans-serif"],
       diatype: ["ABC Diatype Light", "sans-serif"],
     },
   },
