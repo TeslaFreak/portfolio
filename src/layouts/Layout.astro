@@ -19,10 +19,14 @@ const { title } = Astro.props;
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-    <ViewTransitions />
-  </head>
+    <link rel="stylesheet" href="/src/styles/global.css" /><meta
+      name="generator"
+      content={Astro.generator}
+    /><title>{title}</title></head
+  >
+
+  <ViewTransitions />
+
   <body class="no-scrollbar">
     <main class="relative">
       <slot />
