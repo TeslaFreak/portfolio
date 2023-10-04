@@ -71,18 +71,20 @@ function ImageSlider() {
 
     // Clean up the event listeners when the component unmounts
     return () => {
-      track.current.removeEventListener("mousedown", handleOnDown);
-      track.current.removeEventListener("touchstart", (e) =>
-        handleOnDown(e.touches[0])
-      );
-      track.current.removeEventListener("mouseup", handleOnUp);
-      track.current.removeEventListener("touchend", (e) =>
-        handleOnUp(e.touches[0])
-      );
-      track.current.removeEventListener("mousemove", handleOnMove);
-      track.current.removeEventListener("touchmove", (e) =>
-        handleOnMove(e.touches[0])
-      );
+      if (track.current) {
+        track.current.removeEventListener("mousedown", handleOnDown);
+        track.current.removeEventListener("touchstart", (e) =>
+          handleOnDown(e.touches[0])
+        );
+        track.current.removeEventListener("mouseup", handleOnUp);
+        track.current.removeEventListener("touchend", (e) =>
+          handleOnUp(e.touches[0])
+        );
+        track.current.removeEventListener("mousemove", handleOnMove);
+        track.current.removeEventListener("touchmove", (e) =>
+          handleOnMove(e.touches[0])
+        );
+      }
     };
   }, []);
 
