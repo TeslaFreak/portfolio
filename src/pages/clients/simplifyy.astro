@@ -8,5 +8,94 @@ import ClientLayout from "../../layouts/ClientLayout.astro";
   nextLink="/clients/civicplus"
   bgImgSrc="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2273&q=80"
 >
-  <p>This is my work at Simplifyy</p>
+  <div class="flex flex-row justify-between gap-36">
+    <div class="2xl:flex flex-col hidden">
+      <div class="overflow-hidden">
+        <p class="translate-y-full font-thin text-7xl">SIMPLIFYY</p>
+      </div>
+      <div class="overflow-hidden pt-4">
+        <p class="translate-y-full font-thin text-7xl">SIMPLIFYY</p>
+      </div>
+      <div class="overflow-hidden pt-4">
+        <p class="translate-y-full font-thin text-7xl">SIMPLIFYY</p>
+      </div>
+    </div>
+    <div class="flex flex-col">
+      <div class="overflow-hidden">
+        <p
+          class="translate-y-full font-thin sm:text-7xl text-5xl sm:hidden flex"
+        >
+          SIMPLIFYY
+        </p>
+        <div class="overflow-hidden sm:pt-0 pt-4">
+          <p class="translate-y-full font-thin sm:text-7xl text-5xl">LEAD</p>
+        </div>
+        <div class="overflow-hidden pt-4">
+          <p class="translate-y-full font-thin sm:text-7xl text-5xl">
+            FULL STACK
+          </p>
+        </div>
+        <div class="overflow-hidden pt-4">
+          <p class="translate-y-full font-thin sm:text-7xl text-5xl">
+            DEVELOPER
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="2xl:flex flex-col hidden">
+      <div class="overflow-hidden">
+        <p class="translate-y-full font-thin text-7xl">SIMPLIFYY</p>
+      </div>
+      <div class="overflow-hidden">
+        <p class="translate-y-full font-thin text-7xl">SIMPLIFYY</p>
+      </div>
+    </div>
+  </div>
+  <div class="overflow-hidden pt-4">
+    <p class="translate-y-full font-thin text-base sm:text-4xl">
+      Transforming the way people experience property management. We are
+      dedicated to simplifying the complexities of property ownership, making it
+      effortless, efficient, and stress-free for property owners and residents
+      alike.
+    </p>
+  </div>
 </ClientLayout>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const pList = document.querySelectorAll("p");
+    const callback = (entries, observer) => {
+      let lastVisibleIndex = 0;
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("slideIn");
+          lastVisibleIndex = i;
+        }
+      });
+    };
+    const options = { rootMargin: "-10%" };
+    const myObserver = new IntersectionObserver(callback, options);
+
+    pList.forEach((p) => {
+      myObserver.observe(p);
+    });
+  });
+</script>
+
+<style>
+  .slideIn {
+    animation: slide 0.5s ease-in-out;
+    animation-delay: calc(var(--ao, 0) * 100ms);
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes slide {
+    0% {
+      transform: translate3d(0, 110%, 0);
+    }
+
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+</style>

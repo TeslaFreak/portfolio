@@ -8,13 +8,13 @@ const { title, prevLink, nextLink, bgImgSrc } = Astro.props;
 <Layout title={title}>
   <a
     href={prevLink}
-    class="h-full w-40 z-10 absolute left-0 hover:scale-150 hover:shadow-2xl shadow-stone-700 flex items-center justify-center transition cursor-pointer"
+    class="h-full sm:w-40 w-10 z-10 absolute overflow-hidden left-0 hover:scale-150 hover:shadow-2xl shadow-stone-700 flex items-center justify-center transition cursor-pointer"
   >
     <i class="fa fa-lg fa-chevron-left text-white"></i>
   </a>
   <HeaderBarTopAligned />
   <section
-    class="w-screen h-screen relative bg-black"
+    class="h-[calc(100dvh)] w-[calc(100dvw)] relative bg-black overflow-hidden no-scrollbar"
     transition:animate={slide({ duration: "1s" })}
   >
     <img
@@ -23,14 +23,16 @@ const { title, prevLink, nextLink, bgImgSrc } = Astro.props;
       src={bgImgSrc}
     />
     <div id="fog" class="w-full h-full absolute opacity-40 bg-gray-700"></div>
-    <div class="relative text-white text-5xl px-52 pt-40">
+    <div
+      class="relative text-white text-5xl md:px-52 px-6 pt-40 overflow-scroll no-scrollbar"
+    >
       <slot class="relative" />
     </div>
   </section>
+  <a
+    href={nextLink}
+    class="h-full sm:w-40 w-10 overflow-hidden z-10 absolute right-0 top-0 hover:scale-150 hover:shadow-2xl shadow-stone-700 flex items-center justify-center transition cursor-pointer"
+  >
+    <i class="fa fa-lg fa-chevron-right text-white"></i>
+  </a>
 </Layout>
-<a
-  href={nextLink}
-  class="h-full w-40 z-10 absolute right-0 top-0 hover:scale-150 hover:shadow-2xl shadow-stone-700 flex items-center justify-center transition cursor-pointer"
->
-  <i class="fa fa-lg fa-chevron-right text-white"></i>
-</a>
