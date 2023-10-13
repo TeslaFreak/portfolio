@@ -108,7 +108,7 @@ function ImageSlider() {
   return (
     <div
       id="image-track"
-      className="w-max flex gap-[4vmin] absolute left-1/2 top-1/2  translate-y-[-50%] select-none"
+      className="w-max flex gap-[4vmin] absolute left-1/2 top-1/2  translate-y-[-50%] select-none cursor-grab active:cursor-grabbing pointer-events-auto"
       ref={track}
       data-mouse-down-at={mouseDownAt}
       data-prev-percentage={prevPercentage}
@@ -119,7 +119,7 @@ function ImageSlider() {
         href="/clients/solv"
         onClick={(event) => (isDragging ? event.preventDefault() : null)}
         draggable="false"
-        className=" select-none"
+        className=" select-none pointer-events-none"
       >
         <img
           transition:name="solv-img"
@@ -132,7 +132,7 @@ function ImageSlider() {
         href="/clients/lobby"
         onClick={(event) => (isDragging ? event.preventDefault() : null)}
         draggable="false"
-        className=" select-none"
+        className=" select-none pointer-events-none"
       >
         <img
           transition:name="lobby-img"
@@ -145,7 +145,7 @@ function ImageSlider() {
         href="/clients/simplifyy"
         onClick={(event) => (isDragging ? event.preventDefault() : null)}
         draggable="false"
-        className=" select-none"
+        className=" select-none pointer-events-none"
       >
         <img
           transition:name="simplifyy-img"
@@ -158,7 +158,7 @@ function ImageSlider() {
         href="/clients/civicplus"
         onClick={(event) => (isDragging ? event.preventDefault() : null)}
         draggable="false"
-        className=" select-none"
+        className=" select-none pointer-events-none"
       >
         <img
           transition:name="civic-img"
@@ -171,7 +171,7 @@ function ImageSlider() {
         href="/clients/ge"
         onClick={(event) => (isDragging ? event.preventDefault() : null)}
         draggable="false"
-        className=" select-none"
+        className=" select-none pointer-events-none"
       >
         <img
           transition:name="ge-img"
