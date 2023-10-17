@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import "./Cube.css";
+import { FramedCubeFace } from "./FramedCubeFace";
 
 export const Cube = ({}) => {
   useEffect(() => {
@@ -46,11 +47,13 @@ export const Cube = ({}) => {
             target="_blank"
           >
             <div className="blocker" />
-            <iframe
-              src="https://escapeoverseer.com"
-              width="100%"
-              height="100%"
-            />
+            <FramedCubeFace color="#C6DEF1">
+              <iframe
+                src="https://escapeoverseer.com"
+                width="100%"
+                height="100%"
+              />
+            </FramedCubeFace>
           </a>
 
           <a
@@ -59,25 +62,31 @@ export const Cube = ({}) => {
             target="_blank"
           >
             <div className="blocker" />
-            <iframe
-              src="https://escapeoverseer.com"
-              width="100%"
-              height="100%"
-            />
+            <FramedCubeFace color="#DBCDF0">
+              <iframe
+                src="https://escapeoverseer.com"
+                width="100%"
+                height="100%"
+              />
+            </FramedCubeFace>
           </a>
           <a
             className="cube-face-3 cube-face"
             href="https://youtu.be/C1pZnfNyQQo?si=Fq_3eVe9Shr3LIqX"
             target="_blank"
           >
-            <img src="fuihero.jpg" className="cube-image object-cover" />
+            <FramedCubeFace color="#C9E4DE">
+              <img src="fuihero.jpg" className="cube-image object-cover" />
+            </FramedCubeFace>
           </a>
           <a
             className="cube-face-4 cube-face"
             href="https://www.jayhawkmotorsports.org/"
             target="_blank"
           >
-            <img src="jhmotohero.jpg" className="cube-image object-cover" />
+            <FramedCubeFace color="#FAEDCB">
+              <img src="jhmotohero.jpg" className="cube-image object-cover" />
+            </FramedCubeFace>
           </a>
         </div>
       </div>
