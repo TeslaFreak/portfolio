@@ -33,7 +33,7 @@ function CLIList() {
   const initialPrompt = [
     "Projects In Varying Stages Of Development:",
     ...projects.map((value, index) => `${index}) ${value.title}`),
-    "For more information on any of these projects, type 'mi {project#}'",
+    "For more information on any of these projects, type 'mi {project#}', or type 'help' for a full list of commands",
   ];
 
   const handleEnterKeyPress = (e) => {
@@ -48,7 +48,7 @@ function CLIList() {
     const knownCommands = {
       hello: {
         desc: "Test command, says hello back",
-        return: ["Hello, User!", "a second line appears"],
+        return: ["Hello, User!"],
       },
       ls: {
         desc: "List projects in development",
