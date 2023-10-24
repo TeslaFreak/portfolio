@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css?family=Handjet");
+
+.terminal {
+  font-family: "Handjet", sans-serif;
+  font-size: x-large;
+}
+
+.cursor {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

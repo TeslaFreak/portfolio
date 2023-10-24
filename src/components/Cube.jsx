@@ -57,21 +57,16 @@ export const Cube = ({}) => {
           </a>
 
           <a
-            className="cube-face-2 cube-face"
-            href="https://escapeoverseer.com"
+            className="cube-face-2 cube-face  linkwrap"
+            href="/projects"
             target="_blank"
           >
-            <div className="blocker" />
             <FramedCubeFace color="#DBCDF0">
-              <iframe
-                src="https://escapeoverseer.com"
-                width="100%"
-                height="100%"
-              />
+              <img src="projectshero.jpg" className="cube-image object-fill" />
             </FramedCubeFace>
           </a>
           <a
-            className="cube-face-3 cube-face"
+            className="cube-face-3 cube-face  linkwrap"
             href="https://youtu.be/C1pZnfNyQQo?si=Fq_3eVe9Shr3LIqX"
             target="_blank"
           >
@@ -80,7 +75,7 @@ export const Cube = ({}) => {
             </FramedCubeFace>
           </a>
           <a
-            className="cube-face-4 cube-face"
+            className="cube-face-4 cube-face  linkwrap"
             href="https://www.jayhawkmotorsports.org/"
             target="_blank"
           >

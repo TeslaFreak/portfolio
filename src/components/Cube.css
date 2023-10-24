@@ -23,7 +23,7 @@
 .cube-face {
   position: absolute;
   height: calc(var(--size));
-  backface-visibility: visible;
+  backface-visibility: hidden;
   top: calc(var(--size) * -0.5);
   left: calc(var(--size) * -0.5);
   /* for inner text */
@@ -87,7 +87,6 @@ h1 {
 
 .cube-image {
   width: 100%;
-  object-fit: cover;
   height: 100%;
 }
 
