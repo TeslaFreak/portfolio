@@ -59,9 +59,9 @@ function CLIList() {
         return: ["Invalid input. Make sure to pass valid project ID"],
       },
       help: { desc: "List known commands", return: ["List of commands:"] }, // Placeholder, we will populate this below
-      // ... add more known commands here
     };
 
+    // ... add more known commands here
     for (const cmd in knownCommands) {
       knownCommands["help"].return.push(
         `\t\t${cmd}: ${knownCommands[cmd].desc}`
