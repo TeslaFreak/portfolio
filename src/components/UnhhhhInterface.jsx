@@ -88,7 +88,7 @@ const UnhhhhInterface = () => {
   };
 
   return (
-    <div className="h-screen bg-gray-100">
+    <div className="h-full bg-gray-100 min-h-screen">
       {/* Sticky input & button */}
       <div className="sticky top-0 z-10 bg-white p-4 shadow-md">
         <form onSubmit={handleSubmit} className="flex items-center">
