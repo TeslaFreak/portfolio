@@ -242,8 +242,9 @@ const UnhhhhInterface = () => {
           </a>
         </div>
       </div>
-      {!["IDLE", "SUCCEEDED"].includes(status) ||
-        (true && <LoadingOverlay status={status} />)}
+      {!["IDLE", "SUCCEEDED"].includes(status) && (
+        <LoadingOverlay status={status} />
+      )}
       {!["IDLE", "SUCCEEDED", "QUEUED", "RUNNING"].includes(status) && (
         <ErrorOverlay status={status} />
       )}
