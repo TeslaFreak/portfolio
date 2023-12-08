@@ -232,6 +232,15 @@ const UnhhhhInterface = () => {
             AutoPlay
           </button>
         </div>
+        <div className="fixed bottom-4 left-4">
+          <a href="https://www.buymeacoffee.com/chrisallmon" target="_blank">
+            <img
+              src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+              alt="Buy Me A Coffee"
+              style={{ height: "40px", width: "144px" }}
+            />
+          </a>
+        </div>
       </div>
       {!["IDLE", "SUCCEEDED"].includes(status) && (
         <LoadingOverlay status={status} />
