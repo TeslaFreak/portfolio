@@ -51,7 +51,7 @@ const UnhhhhInterface = () => {
       pollEpisodeStatus(data.executionArn);
 
       let searchParams = new URLSearchParams(window.location.search);
-      searchParams.set("episode", encodeURIComponent(data.executionArn));
+      searchParams.set("episode", data.executionArn);
       let newRelativePathQuery =
         window.location.pathname + "?" + searchParams.toString();
       history.pushState(null, "", newRelativePathQuery);
@@ -83,6 +83,21 @@ const UnhhhhInterface = () => {
         setJobId(data.job_id);
         setMessages(data.script_array);
         setAudioList(data.presignedUrls);
+        if (data.presignedUrls.length === 0) {
+          toast.error(
+            "We're terribly sorry, it looks like the maintainer of this project may have hit their monetary limit for the month. Each episode costs a bit of money to produce, and a monthly limit is in place to prevent this system from emptying their bank account. Please check back next month when the limit resets and try again!",
+            {
+              position: "bottom-right",
+              autoClose: 10000,
+              hideProgressBar: true,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+            }
+          );
+        }
       } else {
         setTimeout(() => pollEpisodeStatus(arn), 7000); // Poll every 7 seconds
       }
