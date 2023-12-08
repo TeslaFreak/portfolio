@@ -13,7 +13,7 @@ const ConsentOverlay = ({ setHasConsent, setAutoPlay }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-gray-600 bg-opacity-75 flex justify-center items-center z-10">
+    <div className="fixed inset-0 bg-gray-600 bg-opacity-75 flex justify-center items-center z-50">
       <div className="flex flex-col items-center p-4 bg-gray-800 w-full">
         <div className="text-white text-xl mb-4 text-center">
           This site contains automated audio playback. We would love your

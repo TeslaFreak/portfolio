@@ -177,8 +177,10 @@ const UnhhhhInterface = () => {
 
   return (
     <div className="h-full bg-gray-100 min-h-screen">
-      {/* Sticky input & button */}
-      <div className="sticky top-0 z-50 bg-white p-4 shadow-md">
+      <div className="sticky top-0 z-40 bg-white p-4 pb-0 text-4xl font-bold">
+        UNHhhh Minisode Generator
+      </div>
+      <div className="sticky top-0 z-40 bg-white p-4 shadow-md">
         <form onSubmit={handleSubmit} className="flex items-center">
           <input
             type="text"
