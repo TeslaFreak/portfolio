@@ -4,6 +4,7 @@ import { MdAutorenew, MdCancel, MdShare } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ConsentOverlay from "./UnhhhhConsentOverlay";
+import ErrorOverlay from "./UnhhhhErrorOverlay";
 
 const UnhhhhInterface = () => {
   const [messages, setMessages] = useState([]);
@@ -13,12 +14,10 @@ const UnhhhhInterface = () => {
   const [status, setStatus] = useState("IDLE");
   const autoPlayRef = useRef(false);
   const [autoPlay, setAutoPlay] = useState(false);
-  const [isPlayiing, setIsPlaying] = useState(false);
   const currentlyPlayingAudio = useRef(null);
 
   useEffect(() => {
     let params = new URL(document.location).searchParams;
-    let name = params.has("episode");
     if (params.has("episode")) {
       pollEpisodeStatus(params.get("episode"));
     }
@@ -32,11 +31,13 @@ const UnhhhhInterface = () => {
     if (hasConsent && autoPlay && currentlyPlayingAudio.current === null) {
       playAudioList(0);
     }
-  }, [audioList, hasConsent, autoPlay, isPlayiing]);
+  }, [audioList, hasConsent, autoPlay]);
 
   const episodeEndpoint =
     "https://66j5f8jkuc.execute-api.us-east-1.amazonaws.com/staging/episode";
   const createEpisodeJob = async () => {
+    setAudioList([]);
+    setMessages([]);
     try {
       const response = await fetch(episodeEndpoint, {
         method: "POST",
@@ -48,12 +49,6 @@ const UnhhhhInterface = () => {
       const data = await response.json();
       setStatus("QUEUED");
       pollEpisodeStatus(data.episodeId);
-
-      let searchParams = new URLSearchParams(window.location.search);
-      searchParams.set("episode", data.episodeId);
-      let newRelativePathQuery =
-        window.location.pathname + "?" + searchParams.toString();
-      history.pushState(null, "", newRelativePathQuery);
     } catch (error) {
       setStatus(error);
       console.error("Error calling first endpoint:", error);
@@ -73,17 +68,31 @@ const UnhhhhInterface = () => {
       );
       const data = await response.json();
 
+      if (response.status == 500) {
+        setStatus("ERROR: Episode does not exist");
+        return;
+      }
       if (data.message) {
         setStatus(data.message);
         return;
       }
       setStatus(data.status);
+      if (data.status && data.status === "FAILED") {
+        setStatus(data.status);
+        setAudioList([]);
+        return;
+      }
       if (data.status && data.status === "SUCCEEDED") {
         setMessages(data.script_array);
         setAudioList(data.presignedUrls);
+        let searchParams = new URLSearchParams(window.location.search);
+        searchParams.set("episode", data.job_id);
+        let newRelativePathQuery =
+          window.location.pathname + "?" + searchParams.toString();
+        history.pushState(null, "", newRelativePathQuery);
         if (data.presignedUrls.length === 0) {
           toast.error(
-            "We're terribly sorry, it looks like the maintainer of this project may have hit their monetary limit for the month. Each episode costs a bit of money to produce, and a monthly limit is in place to prevent this system from emptying their bank account. Please check back next month when the limit resets and try again!",
+            "We're terribly sorry, it looks like the maintainer of this project may have hit their monetary limit for the month. Each episode costs a bit of money to produce, and a monthly limit is in place to prevent this system from emptying their bank account. Please check back after the 12th of the next month when the limit resets and try again!",
             {
               position: "bottom-right",
               autoClose: 10000,
@@ -106,7 +115,7 @@ const UnhhhhInterface = () => {
   };
 
   const playAudioList = (index = 0) => {
-    console.log(`index ${index} called`);
+    if (!import.meta.env.PROD) console.log(`index ${index} called`);
     clearTimeouts();
     if (index < audioList.length) {
       if (currentlyPlayingAudio.current !== null) {
@@ -123,7 +132,7 @@ const UnhhhhInterface = () => {
       audio.addEventListener(
         "loadedmetadata",
         function () {
-          console.log(`index ${index} playing`);
+          if (!import.meta.env.PROD) console.log(`index ${index} playing`);
           audio.play();
           if (!!autoPlayRef.current) {
             setTimeout(() => {
@@ -148,6 +157,7 @@ const UnhhhhInterface = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    history.pushState(null, "", window.location.pathname);
     createEpisodeJob();
   };
 
@@ -168,7 +178,7 @@ const UnhhhhInterface = () => {
   return (
     <div className="h-full bg-gray-100 min-h-screen">
       {/* Sticky input & button */}
-      <div className="sticky top-0 z-10 bg-white p-4 shadow-md">
+      <div className="sticky top-0 z-50 bg-white p-4 shadow-md">
         <form onSubmit={handleSubmit} className="flex items-center">
           <input
             type="text"
@@ -176,32 +186,32 @@ const UnhhhhInterface = () => {
             onChange={(e) => setTopic(e.target.value)}
             placeholder="Enter the episode topic..."
             className={`flex-grow p-2 border rounded-md ${
-              !["IDLE", "SUCCEEDED"].includes(status)
+              ["QUEUED", "RUNNING"].includes(status)
                 ? "bg-gray-200 cursor-not-allowed"
                 : ""
             }`}
-            disabled={!["IDLE", "SUCCEEDED"].includes(status)}
+            disabled={["QUEUED", "RUNNING"].includes(status)}
           />
           <button
             className={`ml-2 px-4 py-2 text-white rounded-md ${
-              !["IDLE", "SUCCEEDED"].includes(status)
+              ["QUEUED", "RUNNING"].includes(status)
                 ? "bg-gray-400 cursor-not-allowed"
                 : "bg-blue-500"
             }`}
             type="submit"
-            disabled={!["IDLE", "SUCCEEDED"].includes(status)}
+            disabled={["QUEUED", "RUNNING"].includes(status)}
           >
             Submit
           </button>
           <button
             className={`ml-2 px-4 py-2 text-white rounded-md flex items-center ${
-              ["IDLE"].includes(status)
+              ["IDLE", "QUEUED", "RUNNING"].includes(status)
                 ? "bg-gray-400 cursor-not-allowed"
                 : "bg-green-500"
             }`}
             onClick={handleShare}
             type="button"
-            disabled={["IDLE"].includes(status)}
+            disabled={["IDLE", "QUEUED", "RUNNING"].includes(status)}
           >
             <MdShare className="mr-2" />
             Share
@@ -225,6 +235,9 @@ const UnhhhhInterface = () => {
       </div>
       {!["IDLE", "SUCCEEDED"].includes(status) && (
         <LoadingOverlay status={status} />
+      )}
+      {!["IDLE", "SUCCEEDED", "QUEUED", "RUNNING"].includes(status) && (
+        <ErrorOverlay status={status} />
       )}
       {["IDLE", "SUCCEEDED"].includes(status) && hasConsent === undefined && (
         <ConsentOverlay
