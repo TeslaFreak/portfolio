@@ -15,7 +15,6 @@ const UnhhhhInterface = () => {
   const [autoPlay, setAutoPlay] = useState(false);
   const [isPlayiing, setIsPlaying] = useState(false);
   const currentlyPlayingAudio = useRef(null);
-  const [jobId, setJobId] = useState("");
 
   useEffect(() => {
     let params = new URL(document.location).searchParams;
@@ -48,10 +47,10 @@ const UnhhhhInterface = () => {
       });
       const data = await response.json();
       setStatus("QUEUED");
-      pollEpisodeStatus(data.executionArn);
+      pollEpisodeStatus(data.episodeId);
 
       let searchParams = new URLSearchParams(window.location.search);
-      searchParams.set("episode", data.executionArn);
+      searchParams.set("episode", data.episodeId);
       let newRelativePathQuery =
         window.location.pathname + "?" + searchParams.toString();
       history.pushState(null, "", newRelativePathQuery);
@@ -61,10 +60,10 @@ const UnhhhhInterface = () => {
     }
   };
 
-  const pollEpisodeStatus = async (arn) => {
+  const pollEpisodeStatus = async (episodeId) => {
     try {
       const response = await fetch(
-        episodeEndpoint + `/${encodeURIComponent(arn)}`,
+        episodeEndpoint + `/${encodeURIComponent(episodeId)}`,
         {
           method: "GET",
           headers: {
@@ -80,7 +79,6 @@ const UnhhhhInterface = () => {
       }
       setStatus(data.status);
       if (data.status && data.status === "SUCCEEDED") {
-        setJobId(data.job_id);
         setMessages(data.script_array);
         setAudioList(data.presignedUrls);
         if (data.presignedUrls.length === 0) {
@@ -99,7 +97,7 @@ const UnhhhhInterface = () => {
           );
         }
       } else {
-        setTimeout(() => pollEpisodeStatus(arn), 7000); // Poll every 7 seconds
+        setTimeout(() => pollEpisodeStatus(episodeId), 7000); // Poll every 7 seconds
       }
     } catch (error) {
       setStatus(error);
