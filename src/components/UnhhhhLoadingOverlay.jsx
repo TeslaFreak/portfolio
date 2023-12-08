@@ -8,6 +8,8 @@ const LoadingOverlay = ({ status }) => {
     "Adjusting the crown",
     "Serving looks",
     "Lip-syncing for the gods",
+    "Boots the house down",
+    "Werqing",
     // Add more lines as desired
   ];
 
@@ -31,7 +33,9 @@ const LoadingOverlay = ({ status }) => {
         </div>
         <div className="text-white text-4xl mb-4 pt-12 ">{funnyLine}</div>
         {/* Spinner */}
-        <div className="border-t-4 border-b-4 border-white rounded-full w-16 h-16 animate-spin"></div>
+        <div className="w-16 h-16 animate-spin">
+          <img src="trixieLoaderMedium.png" alt="loader img" />
+        </div>
       </div>
     </div>
   );
