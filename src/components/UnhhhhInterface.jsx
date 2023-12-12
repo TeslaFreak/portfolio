@@ -177,7 +177,7 @@ const UnhhhhInterface = () => {
   };
 
   return (
-    <div className="h-full bg-gray-100 min-h-screen">
+    <div className="h-full bg-gray-100 min-h-screen min-w-fit">
       <div className="sticky top-0 z-40 bg-white p-4 pb-0 text-4xl font-bold">
         UNHhhh Minisode Generator
       </div>
