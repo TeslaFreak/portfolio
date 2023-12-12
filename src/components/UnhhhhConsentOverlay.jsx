@@ -23,10 +23,11 @@ const ConsentOverlay = ({ setHasConsent, setAutoPlay, isMobile }) => {
           </div>
         ) : (
           <div className="text-white text-xl mb-4 text-center">
-            Do to the nature of mobile device security, we won't be able to play
-            the entire conversation for you automatically here. You can still
-            click any text bubble to play them individually, or for the full
-            experience, we recommend trying our site on a non-mobile device!
+            Due to the nature of mobile device security, we won't be able to
+            play the entire conversation for you automatically here. You can
+            still click any text bubble to play them individually, or for the
+            full experience, we recommend trying our site on a non-mobile
+            device!
           </div>
         )}
         {!isMobile ? (
