@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useMemo } from "react";
 import LoadingOverlay from "./UnhhhhLoadingOverlay";
 import { MdAutorenew, MdCancel, MdShare } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
@@ -32,6 +32,10 @@ const UnhhhhInterface = () => {
       playAudioList(0);
     }
   }, [audioList, hasConsent, autoPlay]);
+
+  const isMobile = useMemo(() => {
+    return "ontouchstart" in window || navigator.maxTouchPoints > 0;
+  }, []);
 
   const episodeEndpoint =
     "https://66j5f8jkuc.execute-api.us-east-1.amazonaws.com/staging/episode";
@@ -222,21 +226,23 @@ const UnhhhhInterface = () => {
             Share
           </button>
         </form>
-        <div className="fixed bottom-4 right-4">
-          <button
-            className={`flex items-center px-4 py-2 text-white rounded-md ${
-              autoPlay ? "bg-purple-500" : "bg-gray-500"
-            }`}
-            onClick={() => setAutoPlay(!autoPlay)}
-          >
-            {autoPlay ? (
-              <MdAutorenew className="mr-2" />
-            ) : (
-              <MdCancel className="mr-2" />
-            )}
-            AutoPlay
-          </button>
-        </div>
+        {!isMobile && (
+          <div className="fixed bottom-4 right-4">
+            <button
+              className={`flex items-center px-4 py-2 text-white rounded-md ${
+                autoPlay ? "bg-purple-500" : "bg-gray-500"
+              }`}
+              onClick={() => setAutoPlay(!autoPlay)}
+            >
+              {autoPlay ? (
+                <MdAutorenew className="mr-2" />
+              ) : (
+                <MdCancel className="mr-2" />
+              )}
+              AutoPlay
+            </button>
+          </div>
+        )}
         <div className="fixed bottom-4 left-4">
           <a href="https://www.buymeacoffee.com/chrisallmon" target="_blank">
             <img
@@ -258,6 +264,7 @@ const UnhhhhInterface = () => {
         <ConsentOverlay
           setHasConsent={setHasConsent}
           setAutoPlay={setAutoPlay}
+          isMobile={isMobile}
         />
       )}
       <ToastContainer />
