@@ -38,6 +38,7 @@ const UnhhhhInterface = () => {
   const createEpisodeJob = async () => {
     setAudioList([]);
     setMessages([]);
+    setStatus("SUBMITTING");
     try {
       const response = await fetch(episodeEndpoint, {
         method: "POST",
@@ -188,32 +189,34 @@ const UnhhhhInterface = () => {
             onChange={(e) => setTopic(e.target.value)}
             placeholder="Enter the episode topic..."
             className={`flex-grow p-2 border rounded-md ${
-              ["QUEUED", "RUNNING"].includes(status)
+              ["QUEUED", "RUNNING", "SUBMITTING"].includes(status)
                 ? "bg-gray-200 cursor-not-allowed"
                 : ""
             }`}
-            disabled={["QUEUED", "RUNNING"].includes(status)}
+            disabled={["QUEUED", "RUNNING", "SUBMITTING"].includes(status)}
           />
           <button
             className={`ml-2 px-4 py-2 text-white rounded-md ${
-              ["QUEUED", "RUNNING"].includes(status)
+              ["QUEUED", "RUNNING", "SUBMITTING"].includes(status)
                 ? "bg-gray-400 cursor-not-allowed"
                 : "bg-blue-500"
             }`}
             type="submit"
-            disabled={["QUEUED", "RUNNING"].includes(status)}
+            disabled={["QUEUED", "RUNNING", "SUBMITTING"].includes(status)}
           >
             Submit
           </button>
           <button
             className={`ml-2 px-4 py-2 text-white rounded-md flex items-center ${
-              ["IDLE", "QUEUED", "RUNNING"].includes(status)
+              ["IDLE", "QUEUED", "RUNNING", "SUBMITTING"].includes(status)
                 ? "bg-gray-400 cursor-not-allowed"
                 : "bg-green-500"
             }`}
             onClick={handleShare}
             type="button"
-            disabled={["IDLE", "QUEUED", "RUNNING"].includes(status)}
+            disabled={["IDLE", "QUEUED", "RUNNING", "SUBMITTING"].includes(
+              status
+            )}
           >
             <MdShare className="mr-2" />
             Share
@@ -240,6 +243,7 @@ const UnhhhhInterface = () => {
               src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
               alt="Buy Me A Coffee"
               style={{ height: "40px", width: "144px" }}
+              title="Contributions help cover server costs. Generating this many voices isn't cheap!"
             />
           </a>
         </div>
@@ -247,9 +251,9 @@ const UnhhhhInterface = () => {
       {!["IDLE", "SUCCEEDED"].includes(status) && (
         <LoadingOverlay status={status} />
       )}
-      {!["IDLE", "SUCCEEDED", "QUEUED", "RUNNING"].includes(status) && (
-        <ErrorOverlay status={status} />
-      )}
+      {!["IDLE", "SUCCEEDED", "QUEUED", "RUNNING", "SUBMITTING"].includes(
+        status
+      ) && <ErrorOverlay status={status} />}
       {["IDLE", "SUCCEEDED"].includes(status) && hasConsent === undefined && (
         <ConsentOverlay
           setHasConsent={setHasConsent}
