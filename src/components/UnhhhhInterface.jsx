@@ -97,7 +97,7 @@ const UnhhhhInterface = () => {
         history.pushState(null, "", newRelativePathQuery);
         if (data.presignedUrls.length === 0) {
           toast.error(
-            "We're terribly sorry, it looks like the maintainer of this project may have hit their monetary limit for the month. Each episode costs a bit of money to produce, and a monthly limit is in place to prevent this system from emptying their bank account. Please check back after the 12th of the next month when the limit resets and try again!",
+            "We're terribly sorry, it looks like the maintainer of this project may have hit their monetary limit for the month. Each episode costs a bit of money to produce, and a monthly limit is in place to prevent this system from emptying their bank account. Please check back on or after the 15th of the next month when the limit resets and try again!",
             {
               position: "bottom-right",
               autoClose: 10000,
