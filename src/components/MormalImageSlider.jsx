@@ -116,16 +116,16 @@ function ImageSlider() {
       onMouseUp={imageMouseUp}
     >
       <a
-        href="/clients/solv"
+        href="/clients/collegeboard"
         onClick={(event) => (isDragging ? event.preventDefault() : null)}
         draggable="false"
         className=" select-none cursor-grab active:cursor-grabbing"
       >
         <img
-          transition:name="solv-img"
+          transition:name="collegeboard-img"
           className="slide-image w-[40vmin] h-[56vmin] object-cover object-right select-none"
           draggable="false"
-          src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+          src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=2622&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         />
       </a>
       <a

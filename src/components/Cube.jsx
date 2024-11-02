@@ -43,16 +43,11 @@ export const Cube = ({}) => {
         <div className="cube cube-right">
           <a
             className="cube-face-1 cube-face linkwrap"
-            href="https://escapeoverseer.com"
+            href="https://allmon.digital/unhhhh"
             target="_blank"
           >
-            <div className="blocker" />
             <FramedCubeFace color="#C6DEF1">
-              <iframe
-                src="https://escapeoverseer.com"
-                width="100%"
-                height="100%"
-              />
+              <img src="comicqueen3.png" className="cube-image object-cover" />
             </FramedCubeFace>
           </a>
 
@@ -66,21 +61,29 @@ export const Cube = ({}) => {
             </FramedCubeFace>
           </a>
           <a
-            className="cube-face-3 cube-face  linkwrap"
-            href="https://youtu.be/C1pZnfNyQQo?si=Fq_3eVe9Shr3LIqX"
+            className="cube-face-3 cube-face linkwrap"
+            href="https://escapeoverseer.com"
             target="_blank"
           >
+            <div className="blocker" />
             <FramedCubeFace color="#C9E4DE">
-              <img src="fuihero.jpg" className="cube-image object-cover" />
+              <iframe
+                src="https://escapeoverseer.com"
+                width="100%"
+                height="100%"
+              />
             </FramedCubeFace>
           </a>
           <a
             className="cube-face-4 cube-face  linkwrap"
-            href="https://www.jayhawkmotorsports.org/"
+            href="https://spotter.gg"
             target="_blank"
           >
             <FramedCubeFace color="#FAEDCB">
-              <img src="jhmotohero.jpg" className="cube-image object-cover" />
+              <img
+                src="Spottergglogo1.webp"
+                className="cube-image object-cover"
+              />
             </FramedCubeFace>
           </a>
         </div>
