@@ -1,0 +1,18 @@
+---
+const GA_MEASUREMENT_ID = "G-RW3L03PJ4Y"; // Replace with your actual Google Analytics Measurement ID
+---
+
+<!-- Google Analytics Script -->
+<script type="text/partytown" define:vars={{ GA_MEASUREMENT_ID }}>
+  // Google Analytics 4 initialization
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", GA_MEASUREMENT_ID);
+</script>
+<script
+  type="text/partytown"
+  src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+></script>
